@@ -1,0 +1,42 @@
+<div class="sidenav">
+  <mat-toolbar color="primary">
+    <span>NGX-MAPBOX-GL</span>
+  </mat-toolbar>
+  <nav>
+    <mat-nav-list>
+      <div mat-list-item #geocodercontainer class="geocodercontainer"></div>
+      <mat-divider></mat-divider>
+      <div mat-list-item>
+      <input class="annotation" mat-list-item type="text"
+             #annotation
+             placeholder="enter annotation">
+      </div>
+      <div>
+        <ng-select #annotations="ngModel"
+                   id="annotations"
+                   name="annotations"
+                   [(ngModel)]="annotationModel"
+                   (change)="handleSelectChange($event)"
+                   bindLabel="name"
+                   bindId="id"
+                   [items]="annotations$ | async"
+                   [addTag]="false"
+                   [multiple]="false"
+                   [hideSelected]="true"
+                   appendTo="body">
+        </ng-select>
+      </div>
+    </mat-nav-list>
+  </nav>
+</div>
+<section class="content">
+  <mgl-map #mapContainer [center]="initialCenter" [zoom]="[initialZoom]" (mapLoad)="loadMap($event)"
+           [style]="'mapbox://styles/mapbox/streets-v9'"
+           (moveEnd)="updateMap($event)">
+    <mgl-marker *ngFor="let feature of (geoJSON$ | async)?.features" [feature]="feature">
+      <div (click)="markerClick(feature)">
+        <img width="20" src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/88/Map_marker.svg/780px-Map_marker.svg.png" />
+      </div>
+    </mgl-marker>
+  </mgl-map>
+</section>

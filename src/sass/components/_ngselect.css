@@ -1,0 +1,7 @@
+@import "~@ng-select/ng-select/themes/material.theme.css";
+.ng-select .ng-select-multiple .ng-select-multiple .ng-select-container .ng-value-container .ng-input > input {
+  padding: 0px;
+}
+.ng-select .ng-select-multiple .ng-select-container {
+  height: 36px;
+}
