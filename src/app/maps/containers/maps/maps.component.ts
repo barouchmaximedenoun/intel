@@ -18,8 +18,9 @@ import GeoJsonModel from '../../models/GeoJsonModel';
 })
 export class MapsComponent implements OnInit, AfterViewInit {
   @ViewChild('mapContainer') mapContainer;
-  @ViewChild('annotation') annotation;
+  // @ViewChild('annotation') annotation;
   @ViewChild('geocodercontainer') geocodercontainer;
+  annotationVal: string = "";
   annotationModel: {id: string, name:string};
   annotations$: Observable<{id: string, name: string}[]>;
   annotations: {id: string, name: string}[];
@@ -100,7 +101,8 @@ export class MapsComponent implements OnInit, AfterViewInit {
 
   onDrawCreate = ({ features }) => {
     const feature = features[0];
-    feature.properties.annotation = this.annotation.nativeElement.value;
+    feature.properties.annotation = this.annotationVal;
+    this.annotationVal = "";
     const jsonFeature = new GeoJsonModel(feature);
     this.mapFacade.addLayer(jsonFeature);
   }

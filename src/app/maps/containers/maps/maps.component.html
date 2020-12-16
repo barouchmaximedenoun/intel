@@ -3,8 +3,11 @@
     <div #geocodercontainer mat-list-item class="geocodercontainer"></div>
     <div mat-list-item>
       <input class="annotation" type="text"
-             #annotation
-             placeholder="enter annotation">
+             #annotation="ngModel"
+             id="annotation"
+             name="annotation"
+             placeholder="enter annotation"
+             [(ngModel)]="annotationVal">
     </div>
     <div mat-list-item>
       <ng-select #annotations="ngModel"
