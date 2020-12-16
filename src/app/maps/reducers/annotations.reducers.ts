@@ -1,6 +1,5 @@
 import { createReducer, on } from '@ngrx/store';
 import * as actions from '../actions';
-import { LngLatLike, LngLatBounds } from 'mapbox-gl';
 import GeoJsonModel from '../models/GeoJsonModel';
 
 export interface AnnotationsState {
@@ -18,14 +17,12 @@ export const annotationsFeatureKey = 'annotations';
 export const reducer = createReducer(
   initialState,
   on(actions.addLayer, (state, { layer }) => {
-    console.log(actions.addLayer, layer);
     return {
       selectedLayer: state.selectedLayer,
       layers: [...state.layers, layer]
     };
   }),
   on(actions.removeLayer, (state, { id }) => {
-    console.log(actions.removeLayer, id);
     const selectedLayer = state.selectedLayer === id? null : state.selectedLayer;
     return {
       selectedLayer,
@@ -35,7 +32,6 @@ export const reducer = createReducer(
     };
   }),
   on(actions.selectLayer, (state, { id }) => {
-    console.log(actions.selectLayer, id);
     return {
       selectedLayer: id,
       layers: state.layers

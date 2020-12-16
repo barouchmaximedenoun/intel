@@ -24,7 +24,6 @@ export const mapsFeatureKey = 'maps';
 export const reducer = createReducer(
   initialState,
   on(mapActions.loadMapChanged, (state, { center, zoom, bbox }) => {
-    console.log(mapActions.loadMapChanged, center, zoom, bbox)
     return {
       center,
         zoom,
@@ -32,7 +31,6 @@ export const reducer = createReducer(
     };
   }),
   on(mapActions.updateDataSuccess, (state, { geoJSON }) => {
-    console.log(geoJSON)
     return {
       ...state,
       geoJSON

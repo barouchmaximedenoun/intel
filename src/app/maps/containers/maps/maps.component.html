@@ -1,33 +1,27 @@
 <div class="sidenav">
-  <mat-toolbar color="primary">
-    <span>NGX-MAPBOX-GL</span>
-  </mat-toolbar>
-  <nav>
-    <mat-nav-list>
-      <div mat-list-item #geocodercontainer class="geocodercontainer"></div>
-      <mat-divider></mat-divider>
-      <div mat-list-item>
-      <input class="annotation" mat-list-item type="text"
+  <app-side-panel [title]="'Map Control Panel'">
+    <div #geocodercontainer mat-list-item class="geocodercontainer"></div>
+    <div mat-list-item>
+      <input class="annotation" type="text"
              #annotation
              placeholder="enter annotation">
-      </div>
-      <div>
-        <ng-select #annotations="ngModel"
-                   id="annotations"
-                   name="annotations"
-                   [(ngModel)]="annotationModel"
-                   (change)="handleSelectChange($event)"
-                   bindLabel="name"
-                   bindId="id"
-                   [items]="annotations$ | async"
-                   [addTag]="false"
-                   [multiple]="false"
-                   [hideSelected]="true"
-                   appendTo="body">
-        </ng-select>
-      </div>
-    </mat-nav-list>
-  </nav>
+    </div>
+    <div mat-list-item>
+      <ng-select #annotations="ngModel"
+                 id="annotations"
+                 name="annotations"
+                 [(ngModel)]="annotationModel"
+                 (change)="handleSelectChange($event)"
+                 bindLabel="name"
+                 bindId="id"
+                 [items]="annotations$ | async"
+                 [addTag]="false"
+                 [multiple]="false"
+                 [hideSelected]="true"
+                 appendTo="body">
+      </ng-select>
+    </div>
+  </app-side-panel>
 </div>
 <section class="content">
   <mgl-map #mapContainer [center]="initialCenter" [zoom]="[initialZoom]" (mapLoad)="loadMap($event)"

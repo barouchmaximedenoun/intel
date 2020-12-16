@@ -15,14 +15,14 @@ import * as fromMaps from './reducers';
 import {FormsModule} from '@angular/forms';
 import {environment} from '../../environments/environment';
 import {NgSelectModule} from '@ng-select/ng-select';
+import { SidePanelComponent } from './components/side-panel/side-panel.component';
 
 
 @NgModule({
-  declarations: [MapsComponent],
+  declarations: [MapsComponent, SidePanelComponent],
   imports: [
     CommonModule,
     FormsModule,
-    // NgxMapboxGLModule,
     NgxMapboxGLModule.withConfig({
       accessToken: environment.mapboxToken,
       geocoderAccessToken: environment.mapboxToken,

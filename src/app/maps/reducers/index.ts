@@ -1,8 +1,7 @@
 import {
-  createSelector,
   createFeatureSelector,
   combineReducers,
-  Action, ActionReducer,
+  Action
 } from '@ngrx/store';
 import * as fromMaps from './map.reducers';
 import * as fromAnnotations from './annotations.reducers';
