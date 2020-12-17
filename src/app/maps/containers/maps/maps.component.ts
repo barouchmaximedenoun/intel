@@ -88,6 +88,7 @@ export class MapsComponent implements OnInit, AfterViewInit {
 
   handleSelectChange = (e) => {
     this.mapFacade.selectLayer(e.id);
+    this.draw.changeMode('simple_select', { featureIds: [e.id] })
   }
 
   onDrawSelectionChange = ({ features }) => {
